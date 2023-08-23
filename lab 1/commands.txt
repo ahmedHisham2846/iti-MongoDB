@@ -1,0 +1,82 @@
+1.    use FacultySystemDB
+
+2.    db.createCollection("student")
+
+3.1.  db.student.insert({fName:"Ahmed", lName:"Mansour", age:24,
+      faculty:{name:"MET Academy", address: "Mansoura"},
+      grades:[{cname:"Math1", grade:"97", pass:true},{CourseName:"OOP",
+      Grade:"89", pass:true},{CourseName:"physics",  Grade:"94", pass:true}],
+      isFired:false})
+
+3.2.  db.student.insertMany([{fName:"Mrihan", lName:"Mohamed", age:26,
+      faculty:{name:"FCI", address:"Minia"}, grades:[{cname:"C#", grade:"60",
+      pass:true}, {cname:"JS",  grade:"100", pass:true}], isFired:false},
+      {fName:"Mohamed", lName:"Akram", age:25, faculty:{name:"Mansoura
+      Uniersity", address:"Mansoura"}, grades:[{cname:"C++", grade:"70",
+      pass:true}, {cname:"Databse",  grade:"80", pass:true}],sFired:false}])
+
+4.1.  db.student.find()
+
+4.2.  db.student.find({fName:{$exists:true}})
+
+4.3.  db.student.find({$or:[{fName:"Ahmed"},{fName:"Ahmed"}]})
+
+4.4.  db.student.find({fName:{$not: /^Ahmed*/}})
+
+4.5.  db.student.find({age: {$lt: 21}})
+
+4.6.  db.student.find({isFired: true})
+
+4.7.  db.student.find({$and:[{age: {$gte: 21}}, {faculty:{$exists:true}}]})
+
+4.8.  db.student.find({fName:{$exists:true}}, {fName:1, lName:1, isFired:1,
+      _id:0})
+
+5.1.  db.student.updateOne({fName:"Mohamed"}, {$set: {lName: "Changed"}})
+
+5.2.  db.student.updateMany({fName:"Mohamed"}, {$set: {lName: "Changed"}})
+
+5.3.  db.student.replaceOne({fName:"Mohamed"}, {fName:"Saad",lName: "Abbas"})
+
+6.    db.student.deleteMany({isFired:true})
+
+7.    db.students.drop()
+
+8.    db.dropDatabase()
+
+9.    use FacultySystemV2
+
+9.1.  db.createCollection("student")
+9.2.  db.createCollection("faculty")
+9.3.  db.createCollection("course")
+
+9.4.1. db.course.insertMany([{_id: 1, cName: "C#",finalMark: 100},{_id: 2,
+       cName: "C++",finalMark: 100},{_id: 3, cName: "OOP",finalMark:
+       100},{_id: 4, cName: "Database",finalMark: 100}])
+
+9.4.2. db.faculty.insertMany([{_id: 1, name: "MET Academy",address:
+       "Mansoura"},{_id: 2, name: "Mansoura University",address:
+       "Mansoura"}])
+
+9.4.3. db.student.insertMany([{fName: "Ahmed",lName: "Mansour",isFired:
+       false,facultyID: 1,grades: [{cID: 1,grade: 64},{cID: 2,grade:
+       78}]},{fName: "Mohamed",lName: "Mostafa",isFired: true,facultyID:
+       2,grades: [{cID: 1,grade: 40},{cID: 3,grade: 35}]},{fName:
+       "Mahmoud",lName: "Nasr",isFired: false,facultyID: 1,grades: [{cID: 
+       4,grade: 55},{cID: 2,grade: 63}]}])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
